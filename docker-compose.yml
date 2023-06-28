@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  pyramid:
+    build: ./pyramidProject
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./pyramidProject:/pyramidProject
+    command: >
+      sh -c "pip install -e . && pserve development.ini --reload"
+
+  client:
+    build: ./client
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./client:/client
+    depends_on:
+      - pyramid
+
+  admin:
+    build: ./admin
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./admin:/admin
+    depends_on:
+      - pyramid
