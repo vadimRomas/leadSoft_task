@@ -1,10 +1,5 @@
 # LeadSoft test task
 
-This project 
-
-## Available Scripts
-
-In the project directory, you can run:
 ### `git clone https://github.com/vadimRomas/leadSoft_task.git romasVadym`
 ### `cd romasVadym`
 ### `docker-compose up --build`
