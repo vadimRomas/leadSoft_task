@@ -16,8 +16,7 @@ services:
       - "3000:3000"
     volumes:
       - ./client:/client
-    depends_on:
-      - pyramid
+      - ./client/node_modules
 
   admin:
     build: ./admin
@@ -25,5 +24,4 @@ services:
       - "3001:3001"
     volumes:
       - ./admin:/admin
-    depends_on:
-      - pyramid
+      - ./admin/node_modules
