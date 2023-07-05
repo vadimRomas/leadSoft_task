@@ -11,17 +11,28 @@ services:
       sh -c "pip install -e . && pserve development.ini --reload"
 
   client:
-    build: ./client
+    container_name: "client"
+    build:
+      context: ./client/
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     volumes:
-      - ./client:/client
-      - ./client/node_modules
+      - ./client/:/client
+      - /client/node_modules
+    depends_on:
+      - pyramid
 
   admin:
-    build: ./admin
+    container_name: "admin"
+    build:
+      context: ./admin/
+      dockerfile: Dockerfile
     ports:
       - "3001:3001"
     volumes:
-      - ./admin:/admin
-      - ./admin/node_modules
+      - ./admin/:/admin
+      - /admin/node_modules
+    depends_on:
+      - pyramid
+
